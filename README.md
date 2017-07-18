@@ -11,7 +11,18 @@ It is licensed under [MIT](https://opensource.org/licenses/MIT).
 
 Java Example for Watson Conversation<br>
 
-## Example 01
+## Example:Slack Bot Integration
+
+Slack integration example here.Easy to integrate with Slack.
+
+<img src="https://riversun.github.io/wcs/img/watson_slacklet_en.gif" width=75%>
+
+https://github.com/riversun/watson-java-slackbot
+
+----
+
+## Example:Send message simply
+
 Send message to Watson and set Watson's context variables from Java program
 
 ### How to run
@@ -171,7 +182,10 @@ FROM WATSON:You say "Hello! Watson". The value set by Java Program is "I need yo
 </dependency>
 ```
 
-## Example 02 Obtain Watson's Context variable from Java logic
+----
+
+
+## Example:Obtain Watson's Context variable from Java logic
 
  This example code is obtaining the Context variable set on Watson Conversation.
 
@@ -264,11 +278,22 @@ Method to get Watson Conversation's Context variable from Java logic
 | Boolean|#getAsBoolean(userId,name of context variables)|Boolean|
 | complex type(nested JSON object)|#getAsMap(userId,name of context variables)|Map|
 
+----
 
-# Chat Bot GUI Example
+
+# Example:Chat Bot GUI
 
 This is the example of Java Chat Bot GUI for Watson Conversation  
 
 https://github.com/riversun/watson-examples-java-chatbot
 
 <img src="https://riversun.github.io/wcs/img/wcs_java_chat.jpg">
+
+----
+
+# More Examples
+
+More examples here.
+
+https://github.com/riversun/watson-conversation-java-examples
+
