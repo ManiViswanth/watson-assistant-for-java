@@ -299,7 +299,7 @@ public class WcsSlackBotExample03 {
   private static final String WATSON_CONVERSATION_WORKSPACE_ID = "SOMETHING";
 
   // EDIT HERE FOR SLACK BOT API TOKEN
-  private static final String SLACK_BOT_API_TOKEN = "xoxb-155899589475-QaAQQqHOmvcOqpefzrJyG1RP";
+  private static final String SLACK_BOT_API_TOKEN = "SOMETHING";
 
   public static void main(String[] args) throws IOException {
 
