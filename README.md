@@ -1,5 +1,5 @@
 # Overview
-This is the Java library for Watson Conversation Service.
+This is the Java library for Watson Assistant (old Watson Conversation) Service.
 You can easily develop a chat bot that supports multiple users
  and easily be integrated with chat front end such as slack.
 
@@ -9,7 +9,7 @@ It is licensed under [MIT](https://opensource.org/licenses/MIT).
 
 # Quick Start
 
-Java Example for Watson Conversation<br>
+Java Example for Watson Assistant (old Watson Conversation)<br>
 
 ## Example:Slack Bot Integration
 
@@ -64,7 +64,7 @@ public class WcsExample01 {
         // time
         String wcsClientId = "dummy_user_id";
 
-        // Create client for Watson Conversation Username, password,
+        // Create client for Watson Assistant (old Watson Conversation) Username, password,
         // workspaceId can be confirmed on the workspace screen of Watson
         // Conversation's workspace
         WcsClient watson = new WcsClient(
@@ -112,7 +112,7 @@ Edit the following part of the code and replace it with the workspaceId, usernam
  String wcsClientId = "dummy_user_id" ;
 ```
 
-When using Helper Library for java(https://github.com/riversun/watson-conversation-service-for-java) to operate Watson Conversation,
+When using Helper Library for java(https://github.com/riversun/watson-conversation-service-for-java) to operate Watson Assistant (old Watson Conversation),
 Create a unique userID (variable named "wcsClientId", note that it is completely different from workspaces username)  for each user to identify the user.
 Since the conversation state needs to be held for each user, it is necessary to set a unique ID for each user described as below.
 
@@ -156,7 +156,7 @@ final String myMessage01 = "Hi! Watson";
 We send a text message to Watson with **#sendMessage(userID, message)**.
 At this timing, the Context variable will be reflected on Watson.
 Here we send the message **"Hi! Watson"** from Java Logic.
-The response of the **Show_Context_node** on Watson Conversation says **You say "<? input.text ?>". The value set by Java Program is "<? context['myRemoteParam']?>"**
+The response of the **Show_Context_node** on Watson Assistant (old Watson Conversation) says **You say "<? input.text ?>". The value set by Java Program is "<? context['myRemoteParam']?>"**
 Therefore, the response from Watson received by the Java logic is as follows.
 ```
 You say "Hi! Watson". The value set by Java Program is "I need you!"
@@ -187,7 +187,7 @@ FROM WATSON:You say "Hello! Watson". The value set by Java Program is "I need yo
 
 ## Example:Obtain Watson's Context variable from Java logic
 
- This example code is obtaining the Context variable set on Watson Conversation.
+ This example code is obtaining the Context variable set on Watson Assistant (old Watson Conversation).
 
 **WcsExample02.java**
 ```java
@@ -268,7 +268,7 @@ The value is acquired as Map as follows.
  Map<String, Object> myParam05 = watson.getAsMap(wcsClientId, "myParam05");
 ```
 
-Method to set/get Watson Conversation's Context variable from Java logic
+Method to set/get Watson Assistant (old Watson Conversation)'s Context variable from Java logic
 
 - Get context value 
 
@@ -365,7 +365,7 @@ public class WcsSlackBotExample03 {
 
 # Example:Chat Bot GUI
 
-This is the example of Java Chat Bot GUI for Watson Conversation  
+This is the example of Java Chat Bot GUI for Watson Assistant (old Watson Conversation)  
 
 https://github.com/riversun/watson-examples-java-chatbot
 
