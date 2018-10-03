@@ -27,10 +27,10 @@ Send message to Watson and set Watson's context variables from Java program
 
 ### How to run
 
-- Download workspace file for Watson conversation from here
+- Download workspace file for Watson Assistant (old Watson Conversation) from here
 https://riversun.github.io/wcs/org.riversun.WcsContextTest.zip
 
-- Unzip and import this workspace file into your watson conversation environment.
+- Unzip and import this workspace file into your Watson Assistant (old Watson Conversation) environment.
 <img src="https://riversun.github.io/wcs/img/wcs_import_workspace.jpg">
 
 <img src="https://riversun.github.io/wcs/img/wcs_example_ws.jpg">
