@@ -5,12 +5,12 @@
 
 	<groupId>org.riversun</groupId>
 	<artifactId>wcs</artifactId>
-	<version>1.1.0</version>
+	<version>1.1.1</version>
 	<packaging>jar</packaging>
 	<name>watson-assistant-service-for-java</name>
 	<description>description
 	</description>
-	<url>https://github.com/riversun/watson-conversation-service-for-java</url>
+	<url>https://github.com/riversun/watson-assistant-for-java</url>
 
 	<licenses>
 		<license>
@@ -21,11 +21,11 @@
 	</licenses>
 
 	<scm>
-		<url>https://github.com/riversun/watson-conversation-service-for-java
+		<url>https://github.com/riversun/watson-assistant-for-java
 		</url>
-		<connection>scm:git:git://github.com/riversun/watson-conversation-service-for-java.git
+		<connection>scm:git:git://github.com/riversun/watson-assistant-for-java.git
 		</connection>
-		<developerConnection>scm:git:git://github.com/riversun/watson-conversation-service-for-java.git
+		<developerConnection>scm:git:git://github.com/riversun/watson-assistant-for-java.git
 		</developerConnection>
 	</scm>
 
@@ -40,7 +40,7 @@
 
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://github.com/riversun/watson-conversation-service-for-java/issues
+		<url>https://github.com/riversun/watson-assistant-for-java/issues
 		</url>
 	</issueManagement>
 
