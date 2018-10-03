@@ -178,7 +178,7 @@ FROM WATSON:You say "Hello! Watson". The value set by Java Program is "I need yo
 <dependency>
 <groupId>org.riversun</groupId>
 <artifactId>wcs</artifactId>
-<version>1.0.2</version>
+<version>1.1.0</version>
 </dependency>
 ```
 
@@ -268,7 +268,9 @@ The value is acquired as Map as follows.
  Map<String, Object> myParam05 = watson.getAsMap(wcsClientId, "myParam05");
 ```
 
-Method to get Watson Conversation's Context variable from Java logic
+Method to set/get Watson Conversation's Context variable from Java logic
+
+- Get context value 
 
 | Type of Context Variablees | Definition of the Methos | Type of return |
 |-----------|------------|------------|
@@ -278,8 +280,88 @@ Method to get Watson Conversation's Context variable from Java logic
 | Boolean|#getAsBoolean(userId,name of context variables)|Boolean|
 | complex type(nested JSON object)|#getAsMap(userId,name of context variables)|Map|
 
+- Set context value
+
+| Type of Context Variablees | Definition of the Methos | Type of return |
+|-----------|------------|------------|
+| Any | #put(key,value)|-|
+
 ----
 
+# Set/Get Context from source code
+
+```
+public class WcsSlackBotExample03 {
+
+  // EDIT HERE FOR WATSON CONVERSAION CREDENTIALS
+  private static final String WATSON_CONVERSATION_USERNAME = "SOMETHING";
+  private static final String WATSON_CONVERSATION_PASSWORD = "SOMETHING";
+  private static final String WATSON_CONVERSATION_WORKSPACE_ID = "SOMETHING";
+
+  // EDIT HERE FOR SLACK BOT API TOKEN
+  private static final String SLACK_BOT_API_TOKEN = "xoxb-155899589475-QaAQQqHOmvcOqpefzrJyG1RP";
+
+  public static void main(String[] args) throws IOException {
+
+    final WcsClient watson = new WcsClient(
+        WATSON_CONVERSATION_USERNAME,
+        WATSON_CONVERSATION_PASSWORD,
+        WATSON_CONVERSATION_WORKSPACE_ID);
+
+    SlackletService slackService = new SlackletService(SLACK_BOT_API_TOKEN);
+
+    // Add slacklet for direct message
+    slackService.addSlacklet(new Slacklet() {
+
+      @Override
+      public void onDirectMessagePosted(SlackletRequest req, SlackletResponse resp) {
+
+        // When a direct message to BOT is posted
+
+        // Slack user who sent the message
+        SlackUser slackUser = req.getSender();
+
+        // Message content (as text)
+        String userInputText = req.getContent();
+
+        // Get the id of the slack user and make it as Watson
+        // Conversation's unique user id
+        String wcsClientId = slackUser.getId();
+
+        // You can call for "welcome" node
+        // (Call every time on code but call once at user's first access)
+        watson.callWelcomeNodeIfNeeded(wcsClientId);
+
+        // Send the text inputed by the user to Watson and receive
+        // Watson's response (outputText)
+        // String botOutputText = watson.sendMessage(wcsClientId, userInputText);
+        MessageResponse res = watson.sendMessage(wcsClientId, userInputText);
+
+        //get string value from watson's context named "action"
+        String action = watson.getAsString(wcsClientId, "action");
+        
+        //do something for example call external API
+        if ("get_foo".equals(action)) {
+          
+          String result = "This is foo result.";
+          watson.put(wcsClientId, "result", result);
+
+          //At this node you should wait for "dummy" input 
+          res = watson.sendMessage(wcsClientId, "");
+        }
+
+        // Display the response from Watson on slack
+        slackService.sendDirectMessageTo(slackUser, watson.getTextFrom(res));
+
+      }
+
+    });
+
+    // start service(connecting to slack)
+    slackService.start();
+
+  }
+``` 
 
 # Example:Chat Bot GUI
 
