@@ -5,9 +5,9 @@
 
 	<groupId>org.riversun</groupId>
 	<artifactId>wcs</artifactId>
-	<version>1.0.2</version>
+	<version>1.1.0</version>
 	<packaging>jar</packaging>
-	<name>watson-conversation-service-for-java</name>
+	<name>watson-assistant-service-for-java</name>
 	<description>description
 	</description>
 	<url>https://github.com/riversun/watson-conversation-service-for-java</url>

@@ -39,68 +39,68 @@ import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
  */
 public class WcsClientWrapper {
 
-    private static final String WCS_VERSION = ConversationService.VERSION_DATE_2017_02_03;
+  private static final String WCS_VERSION = ConversationService.VERSION_DATE_2017_02_03;
 
-    private final Gson mGson = new GsonBuilder().create();
-    private final ConversationService mWcsService;
-    private final String mWorkspaceId;
+  private final Gson mGson = new GsonBuilder().create();
+  private final ConversationService mWcsService;
+  private final String mWorkspaceId;
 
-    WcsClientWrapper(String userName, String password, String workspaceId) {
-        mWorkspaceId = workspaceId;
-        mWcsService = new ConversationService(WCS_VERSION);
-        mWcsService.setUsernameAndPassword(userName, password);
+  WcsClientWrapper(String userName, String password, String workspaceId) {
+    mWorkspaceId = workspaceId;
+    mWcsService = new ConversationService(WCS_VERSION);
+    mWcsService.setUsernameAndPassword(userName, password);
+  }
+
+  /**
+   * Send text to Watson Conversation
+   * 
+   * @param text
+   * @param contextAsJSON
+   * @return
+   */
+  @SuppressWarnings("unchecked")
+  MessageResponse sendMessage(String text, String contextAsJSON) {
+    final Map<String, Object> context = fromJSON(contextAsJSON, Map.class);
+    return sendMessage(text, context);
+  }
+
+  MessageResponse sendMessage(String text, Map<String, Object> context) {
+
+    final MessageRequest newMessage;
+
+    if (context != null) {
+      newMessage = new MessageRequest.Builder()
+          .inputText(text)
+          .context(context)
+          .build();
+    } else {
+      // When calling for the first time,the context is null.
+      newMessage = new MessageRequest.Builder()
+          .inputText(text)
+          .build();
     }
 
-    /**
-     * Send text to Watson Conversation
-     * 
-     * @param text
-     * @param contextAsJSON
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    MessageResponse sendMessage(String text, String contextAsJSON) {
-        final Map<String, Object> context = fromJSON(contextAsJSON, Map.class);
-        return sendMessage(text, context);
-    }
+    final MessageResponse response = mWcsService.message(this.mWorkspaceId, newMessage).execute();
 
-    MessageResponse sendMessage(String text, Map<String, Object> context) {
+    return response;
+  }
 
-        final MessageRequest newMessage;
+  public String getJSONFromResponse(MessageResponse response) {
+    return response.toString();
+  }
 
-        if (context != null) {
-            newMessage = new MessageRequest.Builder()
-                    .inputText(text)
-                    .context(context)
-                    .build();
-        } else {
-            // When calling for the first time,the context is null.
-            newMessage = new MessageRequest.Builder()
-                    .inputText(text)
-                    .build();
-        }
+  public String getContextJSONFromResponse(MessageResponse response) {
+    final Map<String, Object> context = response.getContext();
+    final String json = toJSON(context);
+    return json;
+  }
 
-        final MessageResponse response = mWcsService.message(this.mWorkspaceId, newMessage).execute();
+  private <T> T fromJSON(String json, Class<T> clazz) {
+    return mGson.fromJson(json, clazz);
+  }
 
-        return response;
-    }
-
-    public String getJSONFromResponse(MessageResponse response) {
-        return response.toString();
-    }
-
-    public String getContextJSONFromResponse(MessageResponse response) {
-        final Map<String, Object> context = response.getContext();
-        final String json = toJSON(context);
-        return json;
-    }
-
-    private <T> T fromJSON(String json, Class<T> clazz) {
-        return mGson.fromJson(json, clazz);
-    }
-
-    private <T> String toJSON(T clazz) {
-        return mGson.toJson(clazz);
-    }
+  private <T> String toJSON(T clazz) {
+    return mGson.toJson(clazz);
+  }
 
 }
