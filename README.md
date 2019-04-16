@@ -3,17 +3,17 @@ This is the Java library for Watson Assistant (old Watson Conversation) Service.
 You can easily develop a chat bot that supports multiple users
  and easily be integrated with chat front end such as slack.
 
-Even when accessing v1 api, access using user name and password(ver.2017-02-07's approach) will be deprecated and changed to access using apikey(ver.2018-07-10's approach).
-
-Therefore, this library also supports access using apikey.
-
 It is licensed under [MIT](https://opensource.org/licenses/MIT).
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.riversun/wcs/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.riversun/wcs)
 
 # Quick Start
 
-## Example:Supported NEW API(2018-07-10)
+## Example:Supported NEW API (version.2018-07-10) approach of V1 API
+
+Even when accessing v1 api, access using user name and password(ver.2017-02-07's approach) will be deprecated and changed to access using apikey(ver.2018-07-10's approach).
+
+Therefore, this library also supports access using apikey.
 
 ```java
 package com.example;
