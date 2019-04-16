@@ -5,7 +5,7 @@
 
 	<groupId>org.riversun</groupId>
 	<artifactId>wcs</artifactId>
-	<version>1.1.1</version>
+	<version>1.2.0</version>
 	<packaging>jar</packaging>
 	<name>watson-assistant-service-for-java</name>
 	<description>description
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>com.ibm.watson.developer_cloud</groupId>
 			<artifactId>java-sdk</artifactId>
-			<version>3.8.0</version>
+			<version>3.9.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -136,6 +136,28 @@
 					<additionalparam>-Xdoclint:none</additionalparam>
 					<additionalJOption>-J-Duser.language=en</additionalJOption>
 				</configuration>
+			</plugin>
+			<!-- add source folders -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/java</source>
+								<source>src_watson_patch_from_assistant_691</source>
+								<source>src_watson_patch_from_javasdk_380</source>
+
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
