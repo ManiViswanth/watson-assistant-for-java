@@ -26,9 +26,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import okhttp3.OkHttpClient;
+import org.riversun.wcs.WcsClientWrapper.WatsonCredential;
 
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
+
+import okhttp3.OkHttpClient;
 
 /**
  * Client for Watson Conversation
@@ -63,6 +65,13 @@ public class WcsClient {
     mCtxMgr = new WcsClientUserContextManager(contextCacheImpl);
     setLibLoggingEnabled(false);
   }
+  
+  public WcsClient(WatsonCredential cred, String workspaceId) {
+      mWcsWrapper = new WcsClientWrapper(cred, workspaceId);
+      mCtxMgr = new WcsClientUserContextManager();
+      setLibLoggingEnabled(false);
+  }
+
 
   public synchronized boolean isConversationStarted(String wcsClientId) {
     return mCtxMgr.hasUser(wcsClientId);
