@@ -7,6 +7,20 @@ It is licensed under [MIT](https://opensource.org/licenses/MIT).
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.riversun/wcs/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.riversun/wcs)
 
+
+# Dependency
+
+**Maven**
+```xml
+<dependency>
+<groupId>org.riversun</groupId>
+<artifactId>wcs</artifactId>
+<version>1.2.0</version>
+</dependency>
+```
+
+----
+
 # Quick Start
 
 ## Example:Supported NEW API (version.2018-07-10) approach of V1 API
@@ -206,17 +220,7 @@ FROM WATSON:You say "Hi! Watson". The value set by Java Program is "I need you!"
 FROM WATSON:You say "Hello! Watson". The value set by Java Program is "I need you!"
 ```
 
-### Dependency
-**Maven**
-```xml
-<dependency>
-<groupId>org.riversun</groupId>
-<artifactId>wcs</artifactId>
-<version>1.1.0</version>
-</dependency>
-```
 
-----
 
 
 ## Example:Obtain Watson's Context variable from Java logic
